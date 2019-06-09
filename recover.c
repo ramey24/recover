@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
             // open the file
             img = fopen(filename, "w");
             
-            // write to the img 512 blocks of size 1 byte
-            fwrite(buffer, 1, 512, img);
+            // write to the img 1 block of size 512 bytes
+            fwrite(buffer, 512, 1, img);
             
             jpegNo += 1;
         }
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
         // if the 512 bytes currently being read is already a part of a jpeg
         else if (jpegNo != 0)
         {
-            fwrite(buffer, 1, 512, img);
+            fwrite(buffer, 512, 1, img);
         }
         
     }
